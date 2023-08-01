@@ -131,7 +131,7 @@ func ClientFromConfig(c *Config) (*RPCClient, error) {
 	// Try to dial to serf
 	conn, err := net.DialTimeout("tcp", c.Addr, c.Timeout)
 	if err != nil {
-		fmt.Println(err)
+		fmt.Println("line 134", err)
 		return nil, err
 	}
 
@@ -154,7 +154,7 @@ func ClientFromConfig(c *Config) (*RPCClient, error) {
 	// Do the initial handshake
 	if err := client.handshake(); err != nil {
 		client.Close()
-		fmt.Println(err)
+		fmt.Println("line 157", err)
 		return nil, err
 	}
 
@@ -162,7 +162,7 @@ func ClientFromConfig(c *Config) (*RPCClient, error) {
 	if c.AuthKey != "" {
 		if err := client.auth(c.AuthKey); err != nil {
 			client.Close()
-			fmt.Println(err)
+			fmt.Println("line 165", err)
 			return nil, err
 		}
 	}
